@@ -4,11 +4,11 @@ services:
     ports: 
       - 3000:3000
   ydev_app: 
-    build: ydev_app 
+    build:
+      context: ydev_app 
+      target: dev-envs
     ports: 
       - 8080:8080
-    secrets:
-      - db-password
   ydev_db:
     image: mysql:8.0.27
     command: --default-authentication-plugin=mysql_native_password
@@ -18,12 +18,4 @@ services:
       MYSQL_ROOT_PASSWORD: password
     expose: 
       - 3306
-    volumes:
-      - db-data:/var/lib/mysql
-  volumes:
-    db-data:
-  secrets:
-    db-password:
-      file: db/password.txt
-
 
