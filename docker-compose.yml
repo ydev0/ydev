@@ -3,6 +3,8 @@ services:
     build: ydev_web
     ports: 
       - 5173:5173
+    expose:
+      - 5173
   ydev_app: 
     build:
       context: ydev_app 
