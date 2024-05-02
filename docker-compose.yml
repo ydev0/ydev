@@ -20,4 +20,3 @@ services:
       MYSQL_ROOT_PASSWORD: password
     expose: 
       - 3306
-
