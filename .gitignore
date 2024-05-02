@@ -40,6 +40,12 @@ target/
 /.nb-gradle/
 build/
 !**/src/main/**/build/
+
+### micro services ###
+/ydev_app/
+/ydev_db/
+ydev_web/
+
 !**/src/test/**/build/
 
 ### VS Code ###
