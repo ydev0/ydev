@@ -1,9 +1,0 @@
-[submodule "ydev_app"]
-	path = ydev_app
-	url = https://github.com/ydev0/ydev_app
-[submodule "ydev_db"]
-	path = ydev_db
-	url = https://github.com/ydev0/ydev_db
-[submodule "ydev_web"]
-	path = ydev_web
-	url = https://github.com/ydev0/ydev_web
