@@ -33,7 +33,7 @@ public class LoginController implements Initializable {
         User user = new User(emailInput, passwordInput);
         Gson gson = new Gson();
         HttpClient httpClient = HttpClientBuilder.create().build();
-        HttpPost request = new HttpPost("localhost:8080/user/login");
+        HttpPost request = new HttpPost("http://localhost:8080/user/login");
         StringEntity stringEntity = new StringEntity(gson.toJson(user));
         request.setEntity(stringEntity);
         HttpResponse  response = httpClient.execute(request);
