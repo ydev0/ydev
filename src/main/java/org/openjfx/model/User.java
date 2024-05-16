@@ -37,6 +37,11 @@ public class User {
     this.auth = false;
   }
 
+  public User(String email, String password) {
+    this.email = email;
+    this.password = password;
+    this.auth = false;
+  }
 
   public void setId(int id) {
     this.id = id;

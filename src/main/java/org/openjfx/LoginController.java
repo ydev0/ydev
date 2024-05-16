@@ -1,16 +1,20 @@
-
 package org.openjfx;
 
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.control.*;
-
+import javafx.scene.control.*;S
+import org.apache.http.HttpResponse;
+import org.apache.http.client.HttpClient;
+import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
+import org.apache.http.impl.client.HttpClientBuilder;
+import org.openjfx.model.User;
+import com.google.gson.Gson;
 
 public class LoginController implements Initializable {
     @FXML
@@ -19,12 +23,20 @@ public class LoginController implements Initializable {
     public PasswordField passwordField;
     @FXML
     public String emailInput;
+    @FXML
     public String passwordInput;
 
-    public void login(ActionEvent event){
+    public void login(ActionEvent event) throws IOException {
         emailInput = emailField.getText();
         passwordInput = passwordField.getText();
-        System.out.println(emailInput + "\n" + passwordInput);
+
+        User user = new User(emailInput, passwordInput);
+        Gson gson = new Gson();
+        HttpClient httpClient = HttpClientBuilder.create().build();
+        HttpPost request = new HttpPost("localhost:8080/user/login");
+        StringEntity stringEntity = new StringEntity(gson.toJson(user));
+        request.setEntity(stringEntity);
+        HttpResponse  response = httpClient.execute(request);
     }
     
     public void switchScene(ActionEvent event){

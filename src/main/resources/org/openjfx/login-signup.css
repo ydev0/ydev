@@ -2,12 +2,19 @@
     -fx-background-color: #F0F2F5
 }
 
-.button{
+#signupButton{
     -fx-border-radius: 10;
     -fx-background-radius: 10;
     -fx-background-color: black;
     -fx-font-color: white;
-    -fx-font-size: 24;
+    -fx-font-size: 18;
+}
+#loginButton{
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-background-color: black;
+    -fx-font-color: white;
+    -fx-font-size: 18;
 }
 
 
