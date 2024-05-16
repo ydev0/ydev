@@ -12,32 +12,35 @@ import javafx.scene.Parent;
 import javafx.scene.control.*;
 
 
-public class LoginController implements Initializable {
+public class SignupController implements Initializable {
+    @FXML
+    public TextField usernameField;
     @FXML
     public TextField emailField;
     @FXML
     public PasswordField passwordField;
-    @FXML
     public String emailInput;
     public String passwordInput;
+    public String usernameInput;
 
-    public void login(ActionEvent event){
+    public void signup(ActionEvent event){
         emailInput = emailField.getText();
         passwordInput = passwordField.getText();
-        System.out.println(emailInput + "\n" + passwordInput);
+        usernameInput = usernameField.getText();
+        System.out.println(emailInput + "\n" + passwordInput + "\n" + usernameInput);
     }
-    
+
     public void switchScene(ActionEvent event){
         try{
-            Main.setRoot("Signup");
+            Main.setRoot("Login");
         } catch(IOException e){
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    }    
-    
+    }
+
 }

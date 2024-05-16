@@ -1,0 +1,26 @@
+.root{
+    -fx-background-color: #F0F2F5
+}
+
+.button{
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-background-color: black;
+    -fx-font-color: white;
+    -fx-font-size: 24;
+}
+
+
+#contentBox{
+    -fx-background-color: white;
+    -fx-background-radius: 30;
+    -fx-border-radius: 30; 
+}
+
+#titleLabel{
+    -fx-font-size: 24;
+}
+
+#subtitleLabel{
+    -fx-font-size: 16;
+}
