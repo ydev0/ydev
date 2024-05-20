@@ -1,7 +1,7 @@
 package org.openjfx;
 
+import com.ydev00.model.user.User;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -13,7 +13,6 @@ import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.HttpClientBuilder;
-import org.openjfx.model.User;
 import com.google.gson.Gson;
 
 public class LoginController implements Initializable {
@@ -36,7 +35,7 @@ public class LoginController implements Initializable {
         HttpPost request = new HttpPost("localhost:8080/user/login");
         StringEntity stringEntity = new StringEntity(gson.toJson(user));
         request.setEntity(stringEntity);
-        HttpResponse  response = httpClient.execute(request);
+        HttpResponse response = httpClient.execute(request);
     }
     
     public void switchScene(ActionEvent event){

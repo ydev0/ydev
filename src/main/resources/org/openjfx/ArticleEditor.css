@@ -1,0 +1,36 @@
+.root{
+    -fx-background-color: F0F2F5;
+}
+
+#sideBox{
+    -fx-background-color: white;
+    -fx-border-color: transparent;
+}
+
+#profileButton{
+    -fx-background-color: white;
+}
+#articleButton{
+    -fx-background-color: #F7F7F7;
+}
+#feedButton{
+    -fx-background-color: #F7F7F7;
+}
+
+#topBox{
+    -fx-background-color: black;
+}
+#submitButton{
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-background-color: black;
+    -fx-font-size: 18;
+}
+#draftButton{
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-background-color: black;
+    -fx-font-size: 18;
+}
+
+
