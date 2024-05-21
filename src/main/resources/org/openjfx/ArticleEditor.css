@@ -7,11 +7,11 @@
     -fx-border-color: transparent;
 }
 
-#profileButton{
-    -fx-background-color: white;
-}
 #articleButton{
     -fx-background-color: #F7F7F7;
+}
+#profileButton{
+    -fx-background-color: white;
 }
 #feedButton{
     -fx-background-color: #F7F7F7;
