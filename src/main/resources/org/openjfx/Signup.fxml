@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
@@ -12,16 +13,16 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.SignupController">
+<BorderPane fx:id="pane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.SignupController">
     <top>
       <HBox BorderPane.alignment="CENTER">
          <children>
-            <Label text="Label" />
+            <Label text="ydev" />
          </children>
       </HBox>
     </top>
    <center>
-          <VBox fx:id="contentBox" alignment="CENTER" spacing="24.0" BorderPane.alignment="CENTER">
+          <VBox fx:id="contentBox" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="350.0" prefWidth="600.0" spacing="24.0" BorderPane.alignment="CENTER">
               <children>
                   <Label fx:id="titleLabel" text="Crie uma conta">
                       <font>
@@ -33,14 +34,31 @@
                           <Font name="FreeMono" size="11.0" />
                       </font>
             </Label>
-            <TextField fx:id="usernameField" text="Nome de usuario" />
-                  <TextField fx:id="emailField" text="email@domain.com" />
-                  <PasswordField fx:id="passwordField" text="1234567810" />
-            <Button fx:id="imageButton" mnemonicParsing="false" onAction="#chooseImage" text="Selecionar foto" />
-                  <Button fx:id="signupButton" mnemonicParsing="false" onAction="#signup" prefHeight="46.0" prefWidth="210.0" text="Cadastrar" textAlignment="CENTER" textFill="WHITE">
+            <TextField fx:id="usernameField" maxWidth="-Infinity" prefWidth="300.0" text="Nome de usuario" />
+                  <TextField fx:id="emailField" maxWidth="-Infinity" prefWidth="300.0" text="email@domain.com" />
+                  <PasswordField fx:id="passwordField" maxWidth="-Infinity" prefWidth="300.0" text="1234567810" />
+            <Button fx:id="imageButton" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#chooseImage" prefHeight="40.0" prefWidth="210.0" text="Selecionar foto" textFill="WHITE">
+               <font>
+                  <Font size="20.0" />
+               </font>
+               <effect>
+                  <DropShadow offsetY="5.0">
+                     <color>
+                        <Color opacity="0.25" />
+                     </color>
+                  </DropShadow>
+               </effect></Button>
+                  <Button fx:id="signupButton" maxHeight="-Infinity" maxWidth="-Infinity" mnemonicParsing="false" onAction="#signup" prefHeight="40.0" prefWidth="210.0" text="Cadastrar" textAlignment="CENTER" textFill="WHITE">
                       <font>
                           <Font name="System Bold" size="20.0" />
                       </font>
+               <effect>
+                  <DropShadow offsetY="5.0">
+                     <color>
+                        <Color opacity="0.25" />
+                     </color>
+                  </DropShadow>
+               </effect>
             </Button>
                   <Hyperlink fx:id="loginLink" onAction="#switchScene" text="ou entre em uma conta" />
               </children>
@@ -51,6 +69,9 @@
                       </color>
                   </DropShadow>
               </effect>
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="20.0" />
+         </padding>
           </VBox>
    </center>
 </BorderPane>

@@ -17,6 +17,14 @@
     -fx-font-size: 18;
 }
 
+#imageButton{
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+    -fx-background-color: black;
+    -fx-font-color: white;
+    -fx-font-size: 18;
+
+}
 
 #contentBox{
     -fx-background-color: white;

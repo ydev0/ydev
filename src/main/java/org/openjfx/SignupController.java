@@ -77,6 +77,7 @@ public class SignupController implements Initializable {
     public void chooseImage(ActionEvent event){
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Escolha uma foto de perfil");
+        fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
         profilePic = fileChooser.showOpenDialog(emailField.getScene().getWindow());
     }
 

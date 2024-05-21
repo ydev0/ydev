@@ -15,8 +15,9 @@ public class Main extends Application{
         try {
             scene = new Scene(loadFXML("ArticleEditor"));
             scene.getStylesheets().add(getClass().getResource("/org/openjfx/ArticleEditor.css").toExternalForm());
-
             stage.setScene(scene);
+            stage.setMaximized(true);
+            stage.setResizable(false);
             stage.show();
         }catch(IOException | NullPointerException e){
             e.printStackTrace();

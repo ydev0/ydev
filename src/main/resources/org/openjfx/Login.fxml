@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
@@ -12,7 +13,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.LoginController">
+<BorderPane fx:id="pane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.LoginController">
    <top>
       <HBox BorderPane.alignment="CENTER">
          <children>
@@ -21,7 +22,7 @@
       </HBox>
    </top>
    <center>
-      <VBox fx:id="contentBox" alignment="CENTER" spacing="24.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="contentBox" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="300.0" prefWidth="600.0" spacing="24.0" BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="titleLabel" text="Entre em uma conta">
                <font>
@@ -33,12 +34,18 @@
                   <Font name="FreeMono" size="16.0" />
                </font>
             </Label>
-            <TextField fx:id="emailField" text="email@domain.com" />
-            <PasswordField fx:id="passwordField" text="1234567810" />
+            <TextField fx:id="emailField" maxWidth="-Infinity" prefWidth="300.0" text="email@domain.com" />
+            <PasswordField fx:id="passwordField" maxWidth="-Infinity" prefWidth="300.0" text="1234567810" />
             <Button fx:id="loginButton" mnemonicParsing="false" onAction="#login" prefHeight="46.0" prefWidth="210.0" text="Entrar" textAlignment="CENTER" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="20.0" />
                </font>
+               <effect>
+                  <DropShadow offsetY="5.0">
+                     <color>
+                        <Color opacity="0.25" />
+                     </color></DropShadow>
+               </effect>
             </Button>
             <Hyperlink fx:id="signupLink" onAction="#switchScene" text="ou crie uma nova conta" />
          </children>
@@ -49,6 +56,12 @@
                </color>
             </DropShadow>
          </effect>
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="20.0" />
+         </padding>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
       </VBox>
    </center>
 </BorderPane>
