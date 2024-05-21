@@ -1,5 +1,4 @@
 package org.openjfx;
-
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.scene.Parent;
@@ -14,14 +13,15 @@ public class Main extends Application{
     @Override
     public void start(Stage stage) throws IOException{
         try {
-            scene = new Scene(loadFXML("Login"));
-            scene.getStylesheets().add(getClass().getResource("/org/openjfx/login-signup.css").toExternalForm());
+            scene = new Scene(loadFXML("ArticleEditor"));
+            scene.getStylesheets().add(getClass().getResource("/org/openjfx/ArticleEditor.css").toExternalForm());
+
             stage.setScene(scene);
             stage.show();
-
         }catch(IOException | NullPointerException e){
             e.printStackTrace();
         }
+        
     }
 
     static void setRoot(String fxml) throws IOException {
