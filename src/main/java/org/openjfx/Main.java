@@ -13,8 +13,8 @@ public class Main extends Application{
     @Override
     public void start(Stage stage) throws IOException{
         try {
-            scene = new Scene(loadFXML("ArticleEditor"));
-            scene.getStylesheets().add(getClass().getResource("/org/openjfx/ArticleEditor.css").toExternalForm());
+            scene = new Scene(loadFXML("Login"));
+            scene.getStylesheets().add(getClass().getResource("/org/openjfx/LoginSignup.css").toExternalForm());
             stage.setScene(scene);
             stage.setMaximized(true);
             stage.setResizable(false);
@@ -22,7 +22,6 @@ public class Main extends Application{
         }catch(IOException | NullPointerException e){
             e.printStackTrace();
         }
-        
     }
 
     static void setRoot(String fxml) throws IOException {

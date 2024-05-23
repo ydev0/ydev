@@ -37,7 +37,7 @@ public class LoginController implements Initializable {
         request.setEntity(stringEntity);
         HttpResponse response = httpClient.execute(request);
     }
-    
+
     public void switchScene(ActionEvent event){
         try{
             Main.setRoot("Signup");
@@ -46,9 +46,9 @@ public class LoginController implements Initializable {
             e.printStackTrace();
         }
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-    }    
-    
+    }
+
 }

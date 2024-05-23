@@ -3,7 +3,7 @@ module org.openjfx {
     requires javafx.fxml;
     requires javafx.base;
     requires javafx.graphics;
-    requires  javafx.web;
+    requires javafx.web;
     requires java.base;
     requires java.sql;
     requires com.google.gson;
