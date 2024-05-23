@@ -164,5 +164,4 @@ public RequestHandler(String url) {
   public void setMethod(String method) {
     this.method = method;
   }
-
 }

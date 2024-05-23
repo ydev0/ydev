@@ -77,7 +77,7 @@ public class SignupController implements Initializable {
         try{
             Main.setRoot("Login");
         } catch(IOException e){
-            System.out.println(e.getMessage());
+            System.err.println(e.getMessage());
             e.printStackTrace();
         }
     }

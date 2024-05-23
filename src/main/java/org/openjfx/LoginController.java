@@ -16,49 +16,49 @@ import org.openjfx.util.RequestHandler;
 
 
 public class LoginController implements Initializable {
-    @FXML
-    public TextField emailField;
-    @FXML
-    public PasswordField passwordField;
-    @FXML
-    public String emailInput;
-    @FXML
-    public String passwordInput;
+  @FXML
+  public TextField emailField;
+  @FXML
+  public PasswordField passwordField;
+  @FXML
+  public String emailInput;
+  @FXML
+  public String passwordInput;
 
-    public User login(ActionEvent event) throws IOException {
-        RequestHandler requestHandler = new RequestHandler();
-        Gson gson = new Gson();
+  public User login(ActionEvent event) throws IOException {
+    RequestHandler requestHandler = new RequestHandler();
+    Gson gson = new Gson();
 
-        emailInput = emailField.getText();
-        passwordInput = passwordField.getText();
+    emailInput = emailField.getText();
+    passwordInput = passwordField.getText();
 
-        User user = new User(emailInput, passwordInput);
-        HttpResponse response = requestHandler.sendRequest("login", "POST", user, null);
+    User user = new User(emailInput, passwordInput);
+    HttpResponse response = requestHandler.sendRequest("login", "POST", user, null);
 
 
-        Reader reader = new InputStreamReader(response.getEntity().getContent());
-        User userResponse = gson.fromJson(reader, User.class);
-        if(userResponse.getId() == 0){
-            System.out.println("User not found");
-            return null;
-        }
-
-        System.out.println(userResponse.getUsername() + " " + userResponse.getEmail() + " " + userResponse.getPassword() + " " + userResponse.getId());
-        System.out.println(response.getStatusLine().getStatusCode());
-        return userResponse;
+    Reader reader = new InputStreamReader(response.getEntity().getContent());
+    User userResponse = gson.fromJson(reader, User.class);
+    if(userResponse.getId() == 0){
+      System.out.println("User not found");
+      return null;
     }
 
-    public void switchScene(ActionEvent event){
-        try{
-            Main.setRoot("Signup");
-        } catch(IOException e){
-            System.out.println(e.getMessage());
-            e.printStackTrace();
-        }
-    }
+    System.out.println(userResponse.getUsername() + " " + userResponse.getEmail() + " " + userResponse.getPassword() + " " + userResponse.getId());
+    System.out.println(response.getStatusLine().getStatusCode());
 
-    @Override
-    public void initialize(URL url, ResourceBundle rb) {
+    return userResponse;
+  }
+
+  public void switchScene(ActionEvent event){
+    try{
+      Main.setRoot("Signup");
+    } catch(IOException e){
+      System.err.println(e.getMessage());
     }
+  }
+
+  @Override
+  public void initialize(URL url, ResourceBundle rb) {
+  }
 
 }
