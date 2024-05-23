@@ -17,10 +17,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.HttpClientBuilder;
+import org.openjfx.util.RequestHandler;
 
 import javax.sql.rowset.serial.SerialBlob;
 
@@ -39,7 +36,10 @@ public class SignupController implements Initializable {
     public String usernameInput;
     public File profilePic;
 
-    public void signup(ActionEvent event) throws IOException {
+    public User signup(ActionEvent event) throws IOException {
+        RequestHandler requestHandler = new RequestHandler();
+        Gson gson = new Gson();
+
         emailInput = emailField.getText();
         passwordInput = passwordField.getText();
         usernameInput = usernameField.getText();
@@ -54,14 +54,22 @@ public class SignupController implements Initializable {
         ImageData profileImgData = new ImageData(binaryData, false);
         Image profileImg = new Image(imageType, profileImgData);
 
-        User user = new User(usernameInput, emailInput, passwordInput, profileImg);
-        Gson gson = new Gson();
-        HttpClient httpClient = HttpClientBuilder.create().build();
-        HttpPost request = new HttpPost("localhost:8080/user/signup");
-        StringEntity stringEntity = new StringEntity(gson.toJson(user));
-        request.setEntity(stringEntity);
-        HttpResponse response = httpClient.execute(request);
 
+        User user = new User(usernameInput, emailInput, passwordInput, profileImg);
+        HttpResponse response = requestHandler.sendRequest("signup", "POST", user, null);
+
+        Reader reader = new InputStreamReader(response.getEntity().getContent());
+        User userResponse = gson.fromJson(reader, User.class);
+
+        if(userResponse.getId() == 0){
+            System.out.println("User not created");
+            return null;
+        }
+
+        System.out.println(userResponse.getUsername() + " " + userResponse.getEmail() + " " + userResponse.getPassword() + " " + userResponse.getId());
+        System.out.println(response.getStatusLine().getStatusCode());
+
+        return userResponse;
 
     }
 

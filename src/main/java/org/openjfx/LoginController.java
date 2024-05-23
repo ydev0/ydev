@@ -1,7 +1,10 @@
 package org.openjfx;
 
+import com.google.gson.Gson;
 import com.ydev00.model.user.User;
 import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.Reader;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -9,11 +12,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.HttpClientBuilder;
-import com.google.gson.Gson;
+import org.openjfx.util.RequestHandler;
+
 
 public class LoginController implements Initializable {
     @FXML
@@ -25,17 +25,27 @@ public class LoginController implements Initializable {
     @FXML
     public String passwordInput;
 
-    public void login(ActionEvent event) throws IOException {
+    public User login(ActionEvent event) throws IOException {
+        RequestHandler requestHandler = new RequestHandler();
+        Gson gson = new Gson();
+
         emailInput = emailField.getText();
         passwordInput = passwordField.getText();
 
         User user = new User(emailInput, passwordInput);
-        Gson gson = new Gson();
-        HttpClient httpClient = HttpClientBuilder.create().build();
-        HttpPost request = new HttpPost("http://localhost:8080/user/login");
-        StringEntity stringEntity = new StringEntity(gson.toJson(user));
-        request.setEntity(stringEntity);
-        HttpResponse response = httpClient.execute(request);
+        HttpResponse response = requestHandler.sendRequest("login", "POST", user, null);
+
+
+        Reader reader = new InputStreamReader(response.getEntity().getContent());
+        User userResponse = gson.fromJson(reader, User.class);
+        if(userResponse.getId() == 0){
+            System.out.println("User not found");
+            return null;
+        }
+
+        System.out.println(userResponse.getUsername() + " " + userResponse.getEmail() + " " + userResponse.getPassword() + " " + userResponse.getId());
+        System.out.println(response.getStatusLine().getStatusCode());
+        return userResponse;
     }
 
     public void switchScene(ActionEvent event){

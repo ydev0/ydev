@@ -13,13 +13,13 @@ public class Main extends Application{
     @Override
     public void start(Stage stage) throws IOException{
         try {
-            scene = new Scene(loadFXML("Login"));
-            scene.getStylesheets().add(getClass().getResource("/org/openjfx/LoginSignup.css").toExternalForm());
+            scene = new Scene(loadFXML("Signup"));
+            scene.getStylesheets().add(getClass().getResource("/org/openjfx/CSS/LoginSignup.css").toExternalForm());
             stage.setScene(scene);
             stage.setMaximized(true);
             stage.setResizable(false);
             stage.show();
-        }catch(IOException | NullPointerException e){
+        } catch(IOException | NullPointerException e){
             e.printStackTrace();
         }
     }
