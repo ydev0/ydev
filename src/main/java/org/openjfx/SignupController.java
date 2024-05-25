@@ -44,7 +44,11 @@ public class SignupController implements Initializable {
         passwordInput = passwordField.getText();
         usernameInput = usernameField.getText();
         String imageType = FilenameUtils.getExtension(String.valueOf(profilePic));
-        System.out.println(imageType);
+
+        if(emailInput.isEmpty() || passwordInput.isEmpty() || usernameInput.isEmpty() || profilePic == null){
+            System.out.println("Empty fields");
+            return null;
+        }
 
         List<Integer> binaryData = new ArrayList<>();
         InputStream inputStream = new FileInputStream(profilePic);
