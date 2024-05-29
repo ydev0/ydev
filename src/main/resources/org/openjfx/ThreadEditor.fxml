@@ -13,6 +13,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.web.HTMLEditor?>
+<?import org.openjfx.components.Sidebar?>
 
 <BorderPane fx:id="editorPane" minHeight="600.0" minWidth="960.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.EditorController">
    <top>
@@ -70,4 +71,7 @@
          </children>
       </VBox>
    </center>
+   <left>
+      <Sidebar fx:id="sidebar"/>
+   </left>
 </BorderPane>

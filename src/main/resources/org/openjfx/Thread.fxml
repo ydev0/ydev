@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.FlowPane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.web.WebView?>
+
+
+<VBox fx:id="threadBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label fx:id="usernameLabel" text="Username" />
+      <Label fx:id="titleLabel" text="Title" />
+      <Label fx:id="textLabel" text="Text" />
+      <WebView fx:id="articleView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="-1.0" prefWidth="-1.0" />
+      <FlowPane fx:id="flowPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+         <children>
+            <Button fx:id="likeButton" mnemonicParsing="false" />
+            <Label fx:id="likeLabel" text="curitr" />
+            <Button fx:id="commentButton" mnemonicParsing="false" />
+            <Label fx:id="commentLabel" text="comentar" />
+         </children>
+      </FlowPane>
+   </children>
+</VBox>
