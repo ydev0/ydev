@@ -13,7 +13,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="pane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.SignupController">
+<BorderPane fx:id="pane" minHeight="600.0" minWidth="960.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.SignupController">
     <top>
       <HBox BorderPane.alignment="CENTER">
          <children>
@@ -22,7 +22,7 @@
       </HBox>
     </top>
    <center>
-          <VBox fx:id="contentBox" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="350.0" prefWidth="600.0" spacing="24.0" BorderPane.alignment="CENTER">
+          <VBox fx:id="contentBox" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" spacing="24.0" BorderPane.alignment="CENTER">
               <children>
                   <Label fx:id="titleLabel" text="Crie uma conta">
                       <font>
@@ -60,7 +60,7 @@
                   </DropShadow>
                </effect>
             </Button>
-                  <Hyperlink fx:id="loginLink" onAction="#switchScene" text="ou entre em uma conta" />
+                  <Hyperlink fx:id="loginLink" onAction="#switchLogin" text="ou entre em uma conta" />
               </children>
               <effect>
                   <DropShadow offsetY="4.0">

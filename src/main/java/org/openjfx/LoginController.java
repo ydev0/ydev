@@ -13,9 +13,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import org.apache.http.HttpResponse;
 import org.openjfx.util.RequestHandler;
+import org.openjfx.util.SceneSwitcher;
 
 
-public class LoginController implements Initializable {
+public class LoginController implements Initializable, SceneSwitcher {
   @FXML
   public TextField emailField;
   @FXML
@@ -45,16 +46,14 @@ public class LoginController implements Initializable {
 
     System.out.println(userResponse.getUsername() + " " + userResponse.getEmail() + " " + userResponse.getPassword() + " " + userResponse.getId());
     System.out.println(response.getStatusLine().getStatusCode());
-
+    switchScene("Feed");
+    App.scene.getStylesheets().add(getClass().getResource("/org/openjfx/CSS/Feed.css").toExternalForm());
+    App.loggedUser = userResponse;
     return userResponse;
   }
 
-  public void switchScene(ActionEvent event){
-    try{
-      Main.setRoot("Signup");
-    } catch(IOException e){
-      System.err.println(e.getMessage());
-    }
+  public void switchSignup(ActionEvent event) throws IOException {
+    switchScene("Signup");
   }
 
   @Override

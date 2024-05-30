@@ -13,7 +13,7 @@
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="pane" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.LoginController">
+<BorderPane fx:id="pane" minHeight="600.0" minWidth="960.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.LoginController">
    <top>
       <HBox BorderPane.alignment="CENTER">
          <children>
@@ -47,7 +47,7 @@
                      </color></DropShadow>
                </effect>
             </Button>
-            <Hyperlink fx:id="signupLink" onAction="#switchScene" text="ou crie uma nova conta" />
+            <Hyperlink fx:id="signupLink" onAction="#switchSignup" text="ou crie uma nova conta" />
          </children>
          <effect>
             <DropShadow offsetY="4.0">

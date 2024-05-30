@@ -18,10 +18,11 @@ import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 import org.apache.http.HttpResponse;
 import org.openjfx.util.RequestHandler;
+import org.openjfx.util.SceneSwitcher;
 
 import javax.sql.rowset.serial.SerialBlob;
 
-public class SignupController implements Initializable {
+public class SignupController implements Initializable, SceneSwitcher {
     @FXML
     public TextField usernameField;
     @FXML
@@ -72,18 +73,14 @@ public class SignupController implements Initializable {
 
         System.out.println(userResponse.getUsername() + " " + userResponse.getEmail() + " " + userResponse.getPassword() + " " + userResponse.getId());
         System.out.println(response.getStatusLine().getStatusCode());
-
+        switchScene("Feed");
+        App.scene.getStylesheets().add(getClass().getResource("/org/openjfx/CSS/Feed.css").toExternalForm());
+        App.loggedUser = userResponse;
         return userResponse;
-
     }
 
-    public void switchScene(ActionEvent event){
-        try{
-            Main.setRoot("Login");
-        } catch(IOException e){
-            System.err.println(e.getMessage());
-            e.printStackTrace();
-        }
+    public void switchLogin(ActionEvent event){
+        switchScene("Login");
     }
 
     public void chooseImage(ActionEvent event){

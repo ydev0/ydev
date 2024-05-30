@@ -15,6 +15,8 @@ module org.openjfx {
     requires spark.core;
     requires org.apache.commons.io;
     requires ydev.app;
-    opens  org.openjfx to javafx.fxml;
+    opens org.openjfx to javafx.fxml;
     exports org.openjfx;
+    exports org.openjfx.components;
+    opens org.openjfx.components to javafx.fxml;
 }

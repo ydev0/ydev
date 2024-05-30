@@ -57,6 +57,7 @@
             <artifactId>commons-io</artifactId>
             <version>2.12.0</version>
         </dependency>
+<<<<<<< HEAD
         <dependency>
           <groupId>org.openjfx</groupId>
           <artifactId>javafx-base</artifactId>
@@ -74,6 +75,8 @@
           <version>22.0.1</version>
       </dependency>
       
+=======
+>>>>>>> refs/remotes/origin/main
     </dependencies>
     <build>
         <plugins>

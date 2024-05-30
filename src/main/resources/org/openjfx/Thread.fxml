@@ -6,16 +6,19 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.web.WebView?>
 
-<VBox fx:id="postBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+
+<VBox fx:id="threadBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label fx:id="usernameLabel" text="Username" />
-      <WebView fx:id="postView" maxHeight="-1.0" maxWidth="-1.0" minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" />
-      <FlowPane fx:id="flowPane">
+      <Label fx:id="titleLabel" text="Title" />
+      <Label fx:id="textLabel" text="Text" />
+      <WebView fx:id="articleView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="-1.0" prefWidth="-1.0" />
+      <FlowPane fx:id="flowPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
          <children>
             <Button fx:id="likeButton" mnemonicParsing="false" />
-            <Label fx:id="likeLabel" text="Label" />
+            <Label fx:id="likeLabel" text="curitr" />
             <Button fx:id="commentButton" mnemonicParsing="false" />
-            <Label fx:id="commentLabel" text="Label" />
+            <Label fx:id="commentLabel" text="comentar" />
          </children>
       </FlowPane>
    </children>
