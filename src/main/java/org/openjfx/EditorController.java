@@ -8,13 +8,10 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.FlowPane;
 import javafx.scene.web.HTMLEditor;
 import javafx.stage.DirectoryChooser;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.HttpClient;
-import org.apache.http.client.methods.HttpPost;
-import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.HttpClientBuilder;
 import org.openjfx.components.Sidebar;
 import org.openjfx.util.RequestHandler;
 import org.openjfx.util.SceneSwitcher;
@@ -24,6 +21,8 @@ import java.net.URL;
 import java.util.ResourceBundle;
 
 public class EditorController implements Initializable, SceneSwitcher {
+    @FXML
+    FlowPane topPane;
     @FXML
     HTMLEditor htmlEditor;
     @FXML
@@ -89,8 +88,11 @@ public class EditorController implements Initializable, SceneSwitcher {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        sidebar.prefWidthProperty().bind(editorPane.widthProperty().divide(8));
-        sidebar.prefHeightProperty().bind(editorPane.widthProperty());
+        topPane.prefWidthProperty().bind(editorPane.widthProperty());
+        topPane.prefHeightProperty().bind(editorPane.heightProperty().divide(20));
+
+        sidebar.prefWidthProperty().bind(editorPane.widthProperty().divide(7));
+        sidebar.prefHeightProperty().bind(editorPane.heightProperty());
 
     }
 }

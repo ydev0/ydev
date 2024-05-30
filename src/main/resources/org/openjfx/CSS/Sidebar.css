@@ -1,3 +1,16 @@
-#sidebar{
+#Sidebar{
     -fx-background-color: white;
+}
+.button{
+    -fx-border-color: transparent;
+    -fx-border-radius: 0;
+}
+#feedButton{
+    -fx-background-color: #F6F6F6;
+}
+#profileButton{
+    -fx-background-color: white;
+}
+#threadButton{
+    -fx-background-color: #F6F6F6;
 }

@@ -22,7 +22,7 @@ public class Sidebar extends VBox implements SceneSwitcher {
     @FXML
     Button profileButton;
     @FXML
-    Button articleButton;
+    Button threadButton;
 
     public Sidebar() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/openjfx/Sidebar.fxml"));
@@ -36,12 +36,15 @@ public class Sidebar extends VBox implements SceneSwitcher {
             e.printStackTrace();
         }
 
-        articleButton.prefWidthProperty().bind(this.widthProperty());
-        articleButton.prefHeightProperty().bind(this.widthProperty().divide(14));
+        threadButton.prefWidthProperty().bind(this.widthProperty());
+        threadButton.prefHeightProperty().bind(this.heightProperty().divide(15));
         profileButton.prefWidthProperty().bind(this.widthProperty());
-        profileButton.prefHeightProperty().bind(this.widthProperty().divide(14));
+        profileButton.prefHeightProperty().bind(this.heightProperty().divide(15));
         feedButton.prefWidthProperty().bind(this.widthProperty());
-        feedButton.prefHeightProperty().bind(this.widthProperty().divide(14));
+        feedButton.prefHeightProperty().bind(this.heightProperty().divide(15));
+
+        logoLabel.prefWidthProperty().bind(this.widthProperty());
+        logoLabel.prefHeightProperty().bind(this.heightProperty().divide(10));
     }
 
     public void switchThread(ActionEvent event){

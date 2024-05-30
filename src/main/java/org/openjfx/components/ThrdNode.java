@@ -11,7 +11,7 @@ import javafx.scene.web.WebView;
 
 import java.io.IOException;
 
-public class ThreadComponent extends VBox {
+public class ThrdNode extends VBox {
     @FXML
     Label usernameLabel;
     @FXML
@@ -32,7 +32,7 @@ public class ThreadComponent extends VBox {
     Label commentLabel;
     Thrd thread;
 
-    public ThreadComponent(Thrd thread){
+    public ThrdNode(Thrd thread){
         this.thread = thread;
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/openjfx/Thread.fxml"));
         fxmlLoader.setRoot(this);

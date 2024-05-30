@@ -10,7 +10,7 @@ import javafx.fxml.FXMLLoader;
 import java.io.IOException;
 
 public class App extends Application {
-    static User loggedUser;
+    public static User loggedUser;
     public static Scene scene;
 
     @Override

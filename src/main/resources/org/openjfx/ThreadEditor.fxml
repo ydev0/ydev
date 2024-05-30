@@ -8,7 +8,6 @@
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
-<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
@@ -17,24 +16,21 @@
 
 <BorderPane fx:id="editorPane" minHeight="600.0" minWidth="960.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.EditorController">
    <top>
-      <HBox fx:id="topBox" alignment="CENTER_LEFT" maxHeight="-Infinity" prefHeight="32.0" BorderPane.alignment="CENTER">
+      <FlowPane fx:id="topPane" BorderPane.alignment="CENTER">
          <children>
             <Label fx:id="pageLabel" text="Editor de artigos" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="18.0" />
-               </font></Label>
+               </font>
+            </Label>
          </children>
-         <effect>
-            <DropShadow offsetY="5.0">
-               <color>
-                  <Color opacity="0.25" />
-               </color>
-            </DropShadow>
-         </effect>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
          <padding>
-            <Insets left="15.0" />
+            <Insets bottom="10.0" left="15.0" top="10.0" />
          </padding>
-      </HBox>
+      </FlowPane>
    </top>
    <center>
       <VBox maxHeight="-Infinity" maxWidth="-Infinity" spacing="20.0" BorderPane.alignment="CENTER">
@@ -69,9 +65,12 @@
                </children>
             </FlowPane>
          </children>
+         <padding>
+            <Insets bottom="30.0" left="40.0" right="40.0" top="15.0" />
+         </padding>
       </VBox>
    </center>
    <left>
-      <Sidebar fx:id="sidebar"/>
+      <Sidebar fx:id="sidebar" />
    </left>
 </BorderPane>
