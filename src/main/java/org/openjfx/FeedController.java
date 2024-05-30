@@ -1,6 +1,7 @@
 package org.openjfx;
 
 import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 import com.ydev00.model.thread.Thrd;
 import com.ydev00.model.user.User;
 import com.ydev00.util.Message;
@@ -19,6 +20,7 @@ import org.openjfx.util.SceneSwitcher;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
+import java.lang.reflect.Type;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
@@ -47,8 +49,6 @@ public class FeedController implements Initializable, SceneSwitcher {
         topPane.prefHeightProperty().bind(feedPane.heightProperty().divide(20));
 
         try {
-            loadFeed();
-            renderFeed();
             loadRecommendations();
             renderRecommendations();
         } catch (IOException e) {
@@ -71,7 +71,7 @@ public class FeedController implements Initializable, SceneSwitcher {
         RequestHandler requestHandler = new RequestHandler();
         Gson gson = new Gson();
 
-        HttpResponse response = requestHandler.sendRequest("home/", "GET", feed, App.loggedUser);
+        HttpResponse response = requestHandler.sendRequest("home", "GET", feed, App.loggedUser);
 
         Reader reader = new InputStreamReader(response.getEntity().getContent());
 
@@ -90,22 +90,24 @@ public class FeedController implements Initializable, SceneSwitcher {
         RequestHandler requestHandler = new RequestHandler();
         Gson gson = new Gson();
 
-        HttpResponse response = requestHandler.sendRequest("/getAll", "GET", recommendations, App.loggedUser);
+        HttpResponse response = requestHandler.sendRequest("getAll", "GET", recommendations, null);
 
         Reader reader = new InputStreamReader(response.getEntity().getContent());
 
         // Parse JSON response directly into a List of Thrd objects
         if(gson.fromJson(reader, Object.class) instanceof Message){
             Message message = gson.fromJson(reader, Message.class);
-            System.out.println("Vazio");
+            System.out.println(message.toString());
         }
         else{
-            recommendations = gson.fromJson(reader, ArrayList.class);
+            Type listType = new TypeToken<ArrayList<User>>(){}.getType();
+            recommendations = new Gson().fromJson(reader, listType);
         }
     }
 
     private void renderRecommendations() throws IOException {
-        if(recommendations == null || recommendations.size() == 0) {
+        if(recommendations == null || recommendations.isEmpty()) {
+            System.out.println("Vazio");
             return;
         }
         recommendationBox.getChildren().clear();

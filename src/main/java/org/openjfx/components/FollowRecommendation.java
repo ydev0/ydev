@@ -35,7 +35,7 @@ public class FollowRecommendation extends FlowPane {
     public void follow(ActionEvent e){
         RequestHandler requestHandler = new RequestHandler();
         Gson gson = new Gson();
-        HttpResponse response = requestHandler.sendRequest("user/"+App.loggedUser.getUsername()+"/follow", "POST", user, App.loggedUser);
+        HttpResponse response = requestHandler.sendRequest("user/follow", "POST", user, App.loggedUser);
     }
 
 }

@@ -54,7 +54,7 @@ public class EditorController implements Initializable, SceneSwitcher {
         Thrd thread = new Thrd(text);
         thread.setArticle(article);
 
-        HttpResponse response = requestHandler.sendRequest("/home/new", "POST", thread, App.loggedUser);
+        HttpResponse response = requestHandler.sendRequest("/home/t/new", "POST", thread, App.loggedUser);
         Reader reader = new InputStreamReader(response.getEntity().getContent());
         Thrd threadResponse = gson.fromJson(reader, Thrd.class);
         if(threadResponse.getId() == 0){
