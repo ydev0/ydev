@@ -61,7 +61,7 @@ public class FeedController implements Initializable, SceneSwitcher {
         RequestHandler requestHandler = new RequestHandler();
         Gson gson = new Gson();
 
-        HttpResponse response = requestHandler.sendRequest("home/feed", "GET", new Object(), App.loggedUser);
+        HttpResponse response = requestHandler.sendRequest("feed", "GET", new Object(), App.loggedUser);
         Reader reader = new InputStreamReader(response.getEntity().getContent());
 
         //Verifique o conteúdo JSON retornado

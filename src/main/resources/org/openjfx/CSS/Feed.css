@@ -34,7 +34,7 @@
     -fx-font-size: 14;
     -fx-background-color: #007BFF; /* Azul vibrante para o botão */
     -fx-text-fill: white;
-    -fx-padding: 10 20; /* Espaçamento interno */
+    -fx-padding: 10 10; /* Espaçamento interno */
     -fx-cursor: hand; /* Cursor de mão para indicar interatividade */
     -fx-transition: background-color 0.3s ease; /* Transição suave para hover */
 }

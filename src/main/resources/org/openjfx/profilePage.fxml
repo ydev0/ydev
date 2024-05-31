@@ -12,36 +12,48 @@
 
 <BorderPane fx:id="profilePane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.ProfileController">
    <top>
-      <FlowPane BorderPane.alignment="CENTER">
+      <FlowPane fx:id="topPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" BorderPane.alignment="CENTER">
          <children>
             <Label text="Perfil" textFill="WHITE">
                <font>
-                  <Font size="18.0" />
+                  <Font name="System Bold" size="18.0" />
                </font>
                <FlowPane.margin>
-                  <Insets bottom="10.0" left="15.0" top="10.0" />
+                  <Insets />
                </FlowPane.margin>
             </Label>
          </children>
          <BorderPane.margin>
             <Insets />
          </BorderPane.margin>
+         <padding>
+            <Insets bottom="10.0" left="15.0" right="15.0" top="10.0" />
+         </padding>
       </FlowPane>
    </top>
    <left>
-      <Sidebar fx:id="sidebar" BorderPane.alignment="CENTER" />
+      <Sidebar fx:id="sidebar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" BorderPane.alignment="CENTER" />
    </left>
    <center>
       <ScrollPane fx:id="scrollPane" BorderPane.alignment="CENTER">
          <content>
             <VBox fx:id="profileBox">
                <children>
-                  <FlowPane fx:id="flowPane">
+                  <FlowPane fx:id="flowPane" hgap="20.0">
                      <children>
                         <ImageView fx:id="profilePicture" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
-                        <Label fx:id="usernameLabel" text="Username" />
-                        <Label fx:id="followersLabel" text="num" />
-                        <Label fx:id="followeesLabel" text="num" />
+                        <Label fx:id="usernameLabel" text="Username">
+                           <font>
+                              <Font size="24.0" />
+                           </font></Label>
+                        <Label fx:id="followersLabel" text="num">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Label>
+                        <Label fx:id="followeesLabel" text="num">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Label>
                      </children>
                   </FlowPane>
                </children>
