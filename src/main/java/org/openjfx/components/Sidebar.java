@@ -56,4 +56,8 @@ public class Sidebar extends VBox implements SceneSwitcher {
         switchScene("Feed");
         App.scene.getStylesheets().add(getClass().getResource("/org/openjfx/CSS/Feed.css").toExternalForm());
     }
+    public void switchProfile(ActionEvent event){
+        switchScene("profilePage");
+        App.scene.getStylesheets().add(getClass().getResource("/org/openjfx/CSS/Profile.css").toExternalForm());
+    }
 }

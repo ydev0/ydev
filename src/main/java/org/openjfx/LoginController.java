@@ -26,7 +26,7 @@ public class LoginController implements Initializable, SceneSwitcher {
   @FXML
   public String passwordInput;
 
-  public User login(ActionEvent event) throws IOException {
+  public void login(ActionEvent event) throws IOException {
     RequestHandler requestHandler = new RequestHandler();
     Gson gson = new Gson();
 
@@ -41,15 +41,15 @@ public class LoginController implements Initializable, SceneSwitcher {
     User userResponse = gson.fromJson(reader, User.class);
     if(userResponse.getId() == 0){
       System.out.println("User not found");
-      return null;
+      return;
     }
 
     System.out.println(userResponse.getUsername() + " " + userResponse.getEmail() + " " + userResponse.getPassword() + " " + userResponse.getId());
     System.out.println(response.getStatusLine().getStatusCode());
-    switchScene("Feed");
-    App.scene.getStylesheets().add(getClass().getResource("/org/openjfx/CSS/Feed.css").toExternalForm());
     App.loggedUser = userResponse;
-    return userResponse;
+    App.loggedUser.setAuth(true);
+    App.scene.getStylesheets().add(getClass().getResource("/org/openjfx/CSS/Feed.css").toExternalForm());
+    switchScene("Feed");
   }
 
   public void switchSignup(ActionEvent event) throws IOException {

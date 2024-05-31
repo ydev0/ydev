@@ -46,8 +46,8 @@ public class FeedController implements Initializable, SceneSwitcher {
         try {
             loadRecommendations();
             renderRecommendations();
-            //loadFeed();
-            //renderFeed();
+            loadFeed();
+            renderFeed();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -59,17 +59,16 @@ public class FeedController implements Initializable, SceneSwitcher {
 
         HttpResponse response = requestHandler.sendRequest("home", "GET", new Object(), App.loggedUser);
         Reader reader = new InputStreamReader(response.getEntity().getContent());
-
-        // Parse JSON response directly into a List of Thrd objects
+        BufferedReader bfr = new BufferedReader(reader);
         Type listType = new TypeToken<ArrayList<Thrd>>(){}.getType();
-        feed = new Gson().fromJson(reader, listType);
+        feed = gson.fromJson(reader, listType);
     }
 
     private void loadRecommendations() throws IOException {
         RequestHandler requestHandler = new RequestHandler();
         Gson gson = new Gson();
 
-        HttpResponse response = requestHandler.sendRequest("getAll", "GET", recommendations, null);
+        HttpResponse response = requestHandler.sendRequest("getAll", "GET", new Object(), null);
         Reader reader = new InputStreamReader(response.getEntity().getContent());
 
         Type listType = new TypeToken<ArrayList<User>>(){}.getType();
@@ -78,22 +77,21 @@ public class FeedController implements Initializable, SceneSwitcher {
 
     private void renderRecommendations() throws IOException {
         if(recommendations == null || recommendations.isEmpty()) {
-            System.out.println("Vazio");
             return;
         }
         recommendationBox.getChildren().clear();
         for(User user : recommendations){
             recommendationBox.getChildren().add(new FollowRecommendation(user));
+            System.out.println(user);
         }
     }
 
     private void renderFeed() {
-        if(feed == null || feed.size() == 0) {
-            return;
-        }
         feedBox.getChildren().clear();
         for(Thrd thrd : feed){
+            System.out.println(thrd);
         }
+        System.out.println(feed.size());
     }
 
 }

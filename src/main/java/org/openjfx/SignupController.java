@@ -6,6 +6,8 @@ import com.ydev00.model.user.User;
 import com.ydev00.model.image.Image;
 import com.ydev00.model.image.ImageData;
 import org.apache.commons.io.FilenameUtils;
+
+import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
@@ -17,9 +19,11 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.stage.FileChooser;
 import org.apache.http.HttpResponse;
+import org.openjfx.util.ImageHandler;
 import org.openjfx.util.RequestHandler;
 import org.openjfx.util.SceneSwitcher;
 
+import javax.imageio.ImageIO;
 import javax.sql.rowset.serial.SerialBlob;
 
 public class SignupController implements Initializable, SceneSwitcher {
@@ -39,31 +43,24 @@ public class SignupController implements Initializable, SceneSwitcher {
 
     public User signup(ActionEvent event) throws IOException {
         RequestHandler requestHandler = new RequestHandler();
+        ImageHandler imageHandler = new ImageHandler();
         Gson gson = new Gson();
 
         emailInput = emailField.getText();
         passwordInput = passwordField.getText();
         usernameInput = usernameField.getText();
-        String imageType = FilenameUtils.getExtension(String.valueOf(profilePic));
 
         if(emailInput.isEmpty() || passwordInput.isEmpty() || usernameInput.isEmpty() || profilePic == null){
             System.out.println("Empty fields");
             return null;
         }
 
-        List<Integer> binaryData = new ArrayList<>();
-        InputStream inputStream = new FileInputStream(profilePic);
-        for(int i = 0; i <  profilePic.length(); i++){
-            binaryData.add(inputStream.read());
-        }
-        ImageData profileImgData = new ImageData(binaryData, false);
-        Image profileImg = new Image(imageType, profileImgData);
-
+        Image profileImg = imageHandler.fileToImage(profilePic);
 
         User user = new User(usernameInput, emailInput, passwordInput, profileImg);
-        HttpResponse response = requestHandler.sendRequest("signup", "POST", user, null);
-
+        HttpResponse response = requestHandler.sendRequest("signup", "POST", user, App.loggedUser);
         Reader reader = new InputStreamReader(response.getEntity().getContent());
+
         User userResponse = gson.fromJson(reader, User.class);
 
         if(userResponse.getId() == 0){
@@ -73,9 +70,9 @@ public class SignupController implements Initializable, SceneSwitcher {
 
         System.out.println(userResponse.getUsername() + " " + userResponse.getEmail() + " " + userResponse.getPassword() + " " + userResponse.getId());
         System.out.println(response.getStatusLine().getStatusCode());
+        App.loggedUser = userResponse;
         switchScene("Feed");
         App.scene.getStylesheets().add(getClass().getResource("/org/openjfx/CSS/Feed.css").toExternalForm());
-        App.loggedUser = userResponse;
         return userResponse;
     }
 
