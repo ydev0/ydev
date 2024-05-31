@@ -39,6 +39,7 @@ public class LoginController implements Initializable, SceneSwitcher {
 
     Reader reader = new InputStreamReader(response.getEntity().getContent());
     User userResponse = gson.fromJson(reader, User.class);
+
     if(userResponse.getId() == 0){
       System.out.println("User not found");
       return;
@@ -48,6 +49,7 @@ public class LoginController implements Initializable, SceneSwitcher {
     System.out.println(response.getStatusLine().getStatusCode());
     App.loggedUser = userResponse;
     App.loggedUser.setAuth(true);
+    System.out.println("loggedUser:"+App.loggedUser);
     App.scene.getStylesheets().add(getClass().getResource("/org/openjfx/CSS/Feed.css").toExternalForm());
     switchScene("Feed");
   }

@@ -39,11 +39,9 @@
                   <FlowPane fx:id="flowPane">
                      <children>
                         <ImageView fx:id="profilePicture" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
-                        <Label text="Username" />
+                        <Label fx:id="usernameLabel" text="Username" />
                         <Label fx:id="followersLabel" text="num" />
-                        <Label text="Seguidores" />
-                        <Label text="num" />
-                        <Label text="Seguindo" />
+                        <Label fx:id="followeesLabel" text="num" />
                      </children>
                   </FlowPane>
                </children>

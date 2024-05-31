@@ -1,6 +1,44 @@
-.root{
-    -fx-background-color: #F0F2F5;
+.root {
+    -fx-background-color: #E8ECEF; /* Cor de fundo levemente mais clara */
+    -fx-font-family: 'Arial', sans-serif; /* Fonte moderna e legível */
 }
-#topPane{
-    -fx-background-color: black;
+
+#topPane {
+    -fx-background-color: #333333; /* Preto suave para o topo */
+}
+
+#followRecommendation {
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, 0.0, 0.0, 2.0);
+    -fx-background-color: #FFFFFF; /* Branco para contraste e clareza */
+    -fx-border-radius: 20; /* Bordas arredondadas mais sutis */
+    -fx-padding: 10; /* Espaçamento interno */
+}
+
+#recommendationBox {
+    -fx-background-color: #FFFFFF;
+    -fx-border-radius: 20; /* Bordas arredondadas */
+    -fx-padding: 15; /* Espaçamento interno */
+    -fx-border-color: #DDD; /* Borda sutil para separação */
+    -fx-border-width: 1; /* Largura da borda */
+}
+
+#usernameLabel {
+    -fx-font-size: 14; /* Fonte um pouco maior */
+    -fx-font-weight: bold; /* Texto em negrito para destaque */
+    -fx-text-fill: #333333; /* Cor de texto mais escura para melhor legibilidade */
+}
+
+#followButton {
+    -fx-border-radius: 20; /* Bordas arredondadas */
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, 0.0, 0.0, 2.0);
+    -fx-font-size: 14;
+    -fx-background-color: #007BFF; /* Azul vibrante para o botão */
+    -fx-text-fill: white;
+    -fx-padding: 10 20; /* Espaçamento interno */
+    -fx-cursor: hand; /* Cursor de mão para indicar interatividade */
+    -fx-transition: background-color 0.3s ease; /* Transição suave para hover */
+}
+
+#followButton:hover {
+    -fx-background-color: #0056b3; /* Cor mais escura no hover */
 }

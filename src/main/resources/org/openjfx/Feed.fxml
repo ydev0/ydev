@@ -18,7 +18,18 @@
       </ScrollPane>
    </center>
    <right>
-      <VBox fx:id="recommendationBox" prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER" />
+      <VBox fx:id="recommendationBox" spacing="24.0" BorderPane.alignment="CENTER">
+         <padding>
+            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+         </padding>
+         <children>
+            <Label text="Sugestões ">
+               <font>
+                  <Font name="System Bold" size="14.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
    </right>
    <top>
       <FlowPane fx:id="topPane" BorderPane.alignment="CENTER">

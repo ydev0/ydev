@@ -4,14 +4,8 @@ package org.openjfx;
 import com.google.gson.Gson;
 import com.ydev00.model.user.User;
 import com.ydev00.model.image.Image;
-import com.ydev00.model.image.ImageData;
-import org.apache.commons.io.FilenameUtils;
-
-import java.awt.image.BufferedImage;
 import java.io.*;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -58,19 +52,16 @@ public class SignupController implements Initializable, SceneSwitcher {
         Image profileImg = imageHandler.fileToImage(profilePic);
 
         User user = new User(usernameInput, emailInput, passwordInput, profileImg);
-        HttpResponse response = requestHandler.sendRequest("signup", "POST", user, App.loggedUser);
+        HttpResponse response = requestHandler.sendRequest("signup", "POST", user, null);
         Reader reader = new InputStreamReader(response.getEntity().getContent());
-
         User userResponse = gson.fromJson(reader, User.class);
 
         if(userResponse.getId() == 0){
             System.out.println("User not created");
             return null;
         }
-
-        System.out.println(userResponse.getUsername() + " " + userResponse.getEmail() + " " + userResponse.getPassword() + " " + userResponse.getId());
-        System.out.println(response.getStatusLine().getStatusCode());
         App.loggedUser = userResponse;
+
         switchScene("Feed");
         App.scene.getStylesheets().add(getClass().getResource("/org/openjfx/CSS/Feed.css").toExternalForm());
         return userResponse;
