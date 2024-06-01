@@ -2,3 +2,19 @@
     -fx-font-family: "JetBrainsMono Nerd Font";
     -fx-set-font-size: 16;
 }
+
+#deleteButton {
+    -fx-border-radius: 30;
+    -fx-background-radius: 30;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, 0.0, 0.0, 2.0);
+    -fx-font-size: 14;
+    -fx-background-color: #ff0000;
+    -fx-text-fill: white;
+    -fx-padding: 10 10;
+    -fx-cursor: hand;
+    -fx-transition: background-color 0.3s ease;
+}
+
+#deleteButton:hover {
+    -fx-background-color: #b30000; /* Cor mais escura no hover */
+}

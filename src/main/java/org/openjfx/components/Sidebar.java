@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.VBox;
+import org.openjfx.App;
 import org.openjfx.util.SceneSwitcher;
 import java.io.IOException;
 
@@ -47,6 +48,7 @@ public class Sidebar extends VBox implements SceneSwitcher {
         switchScene("Feed", "Feed");
     }
     public void switchProfile(ActionEvent event) throws IOException {
+        App.pageUser = App.loggedUser;
         switchScene("profilePage", "Profile");
     }
 }

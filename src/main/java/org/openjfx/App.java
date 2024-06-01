@@ -11,6 +11,7 @@ import java.io.IOException;
 
 public class App extends Application {
     public static User loggedUser;
+    public static User pageUser;
     public static Scene scene;
 
     @Override

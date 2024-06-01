@@ -21,6 +21,7 @@ import javafx.stage.*;
 import org.apache.http.HttpResponse;
 import org.openjfx.App;
 import org.openjfx.util.RequestHandler;
+import org.openjfx.util.SceneSwitcher;
 import org.w3c.dom.Text;
 
 import java.io.*;
@@ -30,7 +31,7 @@ import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
-public class ThrdNode extends VBox {
+public class ThrdNode extends VBox implements SceneSwitcher {
     private Label usernameLabel;
     private Label textLabel;
     private Label titleLabel;
@@ -139,6 +140,28 @@ public class ThrdNode extends VBox {
             dialog.setScene(dialogScene);
             dialog.setResizable(false);
             dialog.show();
+        });
+
+        usernameLabel.setOnMouseClicked(e -> {
+            HttpResponse response = requestHandler.sendRequest("user/"+thread.getUser().getUsername(), "GET", new Object(), App.loggedUser);
+            Reader reader = null;
+            try {
+                reader = new InputStreamReader(response.getEntity().getContent());
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
+            User userResponse = new Gson().fromJson(reader, User.class);
+
+            if(userResponse.getId() == 0){
+                System.out.println("User not found");
+                return;
+            }
+            App.pageUser = userResponse;
+            try {
+                switchScene("profilePage", "Profile");
+            } catch (IOException ex) {
+                throw new RuntimeException(ex);
+            }
         });
     }
 }

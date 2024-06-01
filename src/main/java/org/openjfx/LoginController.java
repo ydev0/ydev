@@ -36,7 +36,6 @@ public class LoginController implements Initializable, SceneSwitcher {
     User user = new User(emailInput, passwordInput);
     HttpResponse response = requestHandler.sendRequest("login", "POST", user, null);
 
-
     Reader reader = new InputStreamReader(response.getEntity().getContent());
     User userResponse = gson.fromJson(reader, User.class);
 
