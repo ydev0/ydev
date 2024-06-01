@@ -1,5 +1,7 @@
 .root{
-    -fx-background-color: #F0F2F5
+    -fx-background-color: #F0F2F5;
+    -fx-font-family: "JetBrainsMono Nerd Font";
+    -fx-set-font-size: 16;
 }
 
 #signupButton{

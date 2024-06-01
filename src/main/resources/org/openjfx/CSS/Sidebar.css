@@ -1,3 +1,9 @@
+.root {
+    -fx-background-color: #F0F2F5;
+    -fx-font-family: "JetBrainsMono Nerd Font";
+    -fx-set-font-size: 16;
+}
+
 #Sidebar{
     -fx-background-color: white;
 }
@@ -16,14 +22,14 @@
 }
 
 #feedButton:hover {
-    -fx-background-color: #333333; /* Cor mais escura no hover */
+    -fx-background-color: #d5d5d5;
     -fx-text-fill: white;
 }
 #profileButton:hover {
-    -fx-background-color: #333333; /* Cor mais escura no hover */
+    -fx-background-color: #e6e6e6;
     -fx-text-fill: white;
 }
 #threadButton:hover {
-    -fx-background-color: #333333; /* Cor mais escura no hover */
+    -fx-background-color: #d5d5d5;
     -fx-text-fill: white;
 }
