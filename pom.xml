@@ -19,7 +19,7 @@
         <dependency>
             <groupId>com.github.ydev0</groupId>
             <artifactId>ydev_app</artifactId>
-            <version>e32054f</version>
+            <version>1f2682e</version>
         </dependency>
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
