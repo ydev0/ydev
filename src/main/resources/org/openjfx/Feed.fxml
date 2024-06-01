@@ -11,19 +11,19 @@
 
 <BorderPane fx:id="feedPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.openjfx.FeedController">
    <center>
-      <ScrollPane BorderPane.alignment="CENTER">
+      <ScrollPane fx:id="scrollPane" vbarPolicy="NEVER" BorderPane.alignment="CENTER">
          <content>
-            <VBox fx:id="feedBox" />
+            <VBox fx:id="feedBox" alignment="TOP_CENTER" />
          </content>
       </ScrollPane>
    </center>
    <right>
-      <VBox fx:id="recommendationBox" spacing="24.0" BorderPane.alignment="CENTER">
+      <VBox fx:id="recommendationBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="24.0" BorderPane.alignment="CENTER">
          <padding>
-            <Insets bottom="15.0" left="15.0" right="15.0" top="15.0" />
+            <Insets bottom="30.0" left="15.0" right="15.0" top="30.0" />
          </padding>
          <children>
-            <Label text="Sugestões ">
+            <Label text="Sugestões para você">
                <font>
                   <Font name="System Bold" size="14.0" />
                </font>

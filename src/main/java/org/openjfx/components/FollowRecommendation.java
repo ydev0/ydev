@@ -11,30 +11,30 @@ import org.openjfx.util.RequestHandler;
 import javafx.scene.image.ImageView;
 
 public class FollowRecommendation extends HBox {
-    RequestHandler requestHandler = new RequestHandler();
-    ImageHandler imageHandler = new ImageHandler();
-    ImageView imageView = new ImageView();
-    Label usernameLabel;
-    Button followButton;
+    private RequestHandler requestHandler = new RequestHandler();
+    private ImageHandler imageHandler = new ImageHandler();
+
+    private ImageView imageView = new ImageView();
+    private Label usernameLabel;
+    private Button followButton;
 
     public FollowRecommendation(User user){
-        this.setId("followRecommendation");
         this.setSpacing(15);
         this.setAlignment(Pos.CENTER);
+        this.setId("followRecommendation");
+
         usernameLabel = new Label(user.getUsername());
         this.getChildren().add(usernameLabel);
-        followButton = new Button("Follow");
-        this.getChildren().add(followButton);
-
         usernameLabel.setId("usernameLabel");
+
+        followButton = new Button("Seguir");
+        this.getChildren().add(followButton);
         followButton.setId("followButton");
 
         followButton.setOnAction(e -> {
             requestHandler.sendRequest("user/follow","POST", user, App.loggedUser);
-
         });
-        if(user.getProfilePic().getImage() != null){
+        if(user.getProfilePic().getImage() != null)
             imageView.setImage((imageHandler.imageDataToImage(user.getProfilePic())));
-        }
     }
 }

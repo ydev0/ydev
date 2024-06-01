@@ -18,18 +18,18 @@ import org.openjfx.util.SceneSwitcher;
 
 public class LoginController implements Initializable, SceneSwitcher {
   @FXML
-  public TextField emailField;
+  private TextField emailField;
   @FXML
-  public PasswordField passwordField;
+  private PasswordField passwordField;
   @FXML
-  public String emailInput;
+  private String emailInput;
   @FXML
-  public String passwordInput;
+  private String passwordInput;
+
+  private RequestHandler requestHandler = new RequestHandler();
+  private Gson gson = new Gson();
 
   public void login(ActionEvent event) throws IOException {
-    RequestHandler requestHandler = new RequestHandler();
-    Gson gson = new Gson();
-
     emailInput = emailField.getText();
     passwordInput = passwordField.getText();
 
@@ -45,17 +45,14 @@ public class LoginController implements Initializable, SceneSwitcher {
       return;
     }
 
-    System.out.println(userResponse.getUsername() + " " + userResponse.getEmail() + " " + userResponse.getPassword() + " " + userResponse.getId());
-    System.out.println(response.getStatusLine().getStatusCode());
     App.loggedUser = userResponse;
     App.loggedUser.setAuth(true);
-    System.out.println("loggedUser:"+App.loggedUser);
-    App.scene.getStylesheets().add(getClass().getResource("/org/openjfx/CSS/Feed.css").toExternalForm());
-    switchScene("Feed");
+
+    switchScene("Feed", "Feed");
   }
 
   public void switchSignup(ActionEvent event) throws IOException {
-    switchScene("Signup");
+    switchScene("Signup", "LoginSignup");
   }
 
   @Override

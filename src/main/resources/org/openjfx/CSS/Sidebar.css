@@ -14,3 +14,16 @@
 #threadButton{
     -fx-background-color: #F6F6F6;
 }
+
+#feedButton:hover {
+    -fx-background-color: #333333; /* Cor mais escura no hover */
+    -fx-text-fill: white;
+}
+#profileButton:hover {
+    -fx-background-color: #333333; /* Cor mais escura no hover */
+    -fx-text-fill: white;
+}
+#threadButton:hover {
+    -fx-background-color: #333333; /* Cor mais escura no hover */
+    -fx-text-fill: white;
+}

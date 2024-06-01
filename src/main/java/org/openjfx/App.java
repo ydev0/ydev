@@ -19,6 +19,7 @@ public class App extends Application {
             scene = new Scene(loadFXML("Login"));
             scene.getStylesheets().add(getClass().getResource("/org/openjfx/CSS/LoginSignup.css").toExternalForm());
             stage.setScene(scene);
+
             stage.setMaximized(true);
             stage.setResizable(false);
             stage.show();

@@ -3,7 +3,7 @@
 }
 
 #topPane{
-    -fx-background-color: black;
+    -fx-background-color: #333333;
 }
 #submitButton{
     -fx-border-radius: 10;

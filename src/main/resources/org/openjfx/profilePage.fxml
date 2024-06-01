@@ -3,6 +3,7 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.SplitPane?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.FlowPane?>
@@ -35,30 +36,37 @@
       <Sidebar fx:id="sidebar" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" BorderPane.alignment="CENTER" />
    </left>
    <center>
-      <ScrollPane fx:id="scrollPane" BorderPane.alignment="CENTER">
-         <content>
-            <VBox fx:id="profileBox">
+      <SplitPane fx:id="splitPane" dividerPositions="0.49281767955801103" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <items>
+            <VBox fx:id="profileBox" alignment="TOP_CENTER" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="24.0" style="-fx-background-color: black;">
                <children>
-                  <FlowPane fx:id="flowPane" hgap="20.0">
-                     <children>
-                        <ImageView fx:id="profilePicture" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
-                        <Label fx:id="usernameLabel" text="Username">
-                           <font>
-                              <Font size="24.0" />
-                           </font></Label>
-                        <Label fx:id="followersLabel" text="num">
-                           <font>
-                              <Font size="14.0" />
-                           </font></Label>
-                        <Label fx:id="followeesLabel" text="num">
-                           <font>
-                              <Font size="14.0" />
-                           </font></Label>
-                     </children>
-                  </FlowPane>
+                  <ImageView fx:id="profilePicture" fitHeight="100.0" fitWidth="100.0" pickOnBounds="true" preserveRatio="true" />
+                  <Label fx:id="usernameLabel" text="Username" textFill="WHITE">
+                     <font>
+                        <Font size="24.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="followersLabel" text="num" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
+                  <Label fx:id="followeesLabel" text="num" textFill="WHITE">
+                     <font>
+                        <Font size="14.0" />
+                     </font>
+                  </Label>
                </children>
+               <padding>
+                  <Insets left="30.0" right="20.0" top="30.0" />
+               </padding>
             </VBox>
-         </content>
-      </ScrollPane>
+            <ScrollPane fx:id="threadPane" prefHeight="200.0" prefWidth="200.0">
+               <content>
+                  <VBox fx:id="threadBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" />
+               </content>
+            </ScrollPane>
+         </items>
+      </SplitPane>
    </center>
 </BorderPane>

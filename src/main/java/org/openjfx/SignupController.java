@@ -1,4 +1,3 @@
-
 package org.openjfx;
 
 import com.google.gson.Gson;
@@ -17,9 +16,6 @@ import org.openjfx.util.ImageHandler;
 import org.openjfx.util.RequestHandler;
 import org.openjfx.util.SceneSwitcher;
 
-import javax.imageio.ImageIO;
-import javax.sql.rowset.serial.SerialBlob;
-
 public class SignupController implements Initializable, SceneSwitcher {
     @FXML
     public TextField usernameField;
@@ -35,46 +31,46 @@ public class SignupController implements Initializable, SceneSwitcher {
     public String usernameInput;
     public File profilePic;
 
-    public User signup(ActionEvent event) throws IOException {
-        RequestHandler requestHandler = new RequestHandler();
-        ImageHandler imageHandler = new ImageHandler();
-        Gson gson = new Gson();
+    private RequestHandler requestHandler = new RequestHandler();
+    private ImageHandler imageHandler = new ImageHandler();
+    private Gson gson = new Gson();
 
+    public void signup(ActionEvent event) throws IOException {
         emailInput = emailField.getText();
         passwordInput = passwordField.getText();
         usernameInput = usernameField.getText();
 
         if(emailInput.isEmpty() || passwordInput.isEmpty() || usernameInput.isEmpty() || profilePic == null){
             System.out.println("Empty fields");
-            return null;
+            return;
         }
 
         Image profileImg = imageHandler.fileToImage(profilePic);
-
         User user = new User(usernameInput, emailInput, passwordInput, profileImg);
+
         HttpResponse response = requestHandler.sendRequest("signup", "POST", user, null);
         Reader reader = new InputStreamReader(response.getEntity().getContent());
         User userResponse = gson.fromJson(reader, User.class);
 
         if(userResponse.getId() == 0){
             System.out.println("User not created");
-            return null;
+            return;
         }
         App.loggedUser = userResponse;
 
-        switchScene("Feed");
-        App.scene.getStylesheets().add(getClass().getResource("/org/openjfx/CSS/Feed.css").toExternalForm());
-        return userResponse;
+        switchScene("Feed", "Feed");
     }
 
-    public void switchLogin(ActionEvent event){
-        switchScene("Login");
+    public void switchLogin(ActionEvent event) throws IOException {
+        switchScene("Login", "LoginSignup");
     }
 
     public void chooseImage(ActionEvent event){
         FileChooser fileChooser = new FileChooser();
+
         fileChooser.setTitle("Escolha uma foto de perfil");
         fileChooser.setInitialDirectory(new File(System.getProperty("user.home")));
+
         profilePic = fileChooser.showOpenDialog(emailField.getScene().getWindow());
     }
 
