@@ -46,6 +46,7 @@ public class ThrdNode extends VBox implements SceneSwitcher {
     private HttpResponse response;
 
     public ThrdNode(Thrd thread){
+
         this.setId("threadNode");
         this.setAlignment(Pos.CENTER);
         this.setSpacing(10);
@@ -63,6 +64,15 @@ public class ThrdNode extends VBox implements SceneSwitcher {
         flowPane.getChildren().add(likeButton);
         flowPane.getChildren().add(unlikeButton);
         flowPane.getChildren().add(commentButton);
+
+        if(App.loggedUser.isRoot()){
+            Button deleteButton = new Button("Apagar ");
+            flowPane.getChildren().add(deleteButton);
+            deleteButton.setId("deleteButton");
+            deleteButton.setOnAction(e ->{
+                requestHandler.sendRequest("/delete/thread", "DELETE", new Thrd(thread.getId()), App.loggedUser);
+            });
+        }
 
         this.getChildren().add(usernameLabel);
         this.getChildren().add(titleLabel);
