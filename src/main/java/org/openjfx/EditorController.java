@@ -43,7 +43,7 @@ public class EditorController implements Initializable, SceneSwitcher {
         String HTML = htmlEditor.getHtmlText();
         String text = textArea.getText();
 
-        if(text.isEmpty() && HTML.isEmpty() && title.isEmpty()){
+        if(text.isEmpty() || HTML.isEmpty() || title.isEmpty()){
             System.out.println("Empty fields");
             return;
         }

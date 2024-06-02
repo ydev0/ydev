@@ -4,10 +4,6 @@ import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.ydev00.model.thread.Thrd;
 import com.ydev00.model.user.User;
-import javafx.event.Event;
-import javafx.event.EventHandler;
-import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -22,12 +18,9 @@ import org.apache.http.HttpResponse;
 import org.openjfx.App;
 import org.openjfx.util.RequestHandler;
 import org.openjfx.util.SceneSwitcher;
-import org.w3c.dom.Text;
-
 import java.io.*;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
 
@@ -61,22 +54,33 @@ public class ThrdNode extends VBox implements SceneSwitcher {
         webView.getEngine().loadContent(thread.getArticle().getMarkdown());
 
         flowPane = new FlowPane();
+        flowPane.setAlignment(Pos.TOP_CENTER);
+        flowPane.setHgap(10);
         flowPane.getChildren().add(likeButton);
+        likeButton.setId("threadButton");
         flowPane.getChildren().add(unlikeButton);
+        unlikeButton.setId("threadButton");
         flowPane.getChildren().add(commentButton);
+        commentButton.setId("threadButton");
 
         if(App.loggedUser.isRoot()){
             Button deleteButton = new Button("Apagar ");
             flowPane.getChildren().add(deleteButton);
             deleteButton.setId("deleteButton");
-            deleteButton.setOnAction(e ->{
+            deleteButton.setOnAction(event ->{
                 requestHandler.sendRequest("/delete/thread", "DELETE", new Thrd(thread.getId()), App.loggedUser);
+//                try {
+//                    switchScene("Feed", "Feed");
+//                } catch (IOException e) {
+//                    throw new RuntimeException(e);
+//                }
             });
         }
 
         this.getChildren().add(usernameLabel);
         this.getChildren().add(titleLabel);
         this.getChildren().add(textLabel);
+        this.getChildren().add(new Separator());
         this.getChildren().add(flowPane);
 
         likeButton.setOnMouseClicked(e -> {
@@ -96,12 +100,13 @@ public class ThrdNode extends VBox implements SceneSwitcher {
             }
             Type listType = new TypeToken<ArrayList<Thrd>>(){}.getType();
             comments = new Gson().fromJson(reader, listType);
-            System.out.println("Comment: " + comments);
+
 
             Stage dialog = new Stage();
             dialog.initModality(Modality.APPLICATION_MODAL);
             dialog.initOwner(this.getScene().getWindow());
             VBox dialogVbox = new VBox(20);
+            dialogVbox.setId("dialogVbox");
 
             TextArea textArea = new TextArea();
             dialogVbox.getChildren().add(textArea);
@@ -112,6 +117,7 @@ public class ThrdNode extends VBox implements SceneSwitcher {
                 response = requestHandler.sendRequest("t/comment/"+thread.getId(), "POST", comment, App.loggedUser);
                 textArea.setText("");
             });
+
             dialogVbox.getChildren().add(sendButton);
 
             Separator separator = new Separator();
@@ -128,6 +134,7 @@ public class ThrdNode extends VBox implements SceneSwitcher {
             }
 
             Scene dialogScene = new Scene(dialogVbox, 960, 600);
+            dialogScene.getStylesheets().add(getClass().getResource("/org/openjfx/CSS/Comments.css").toExternalForm());
 
             dialog.setScene(dialogScene);
             dialog.setResizable(false);

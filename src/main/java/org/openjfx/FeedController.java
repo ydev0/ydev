@@ -56,6 +56,8 @@ public class FeedController implements Initializable, SceneSwitcher {
         recommendationBox.prefWidthProperty().bind(feedPane.widthProperty().divide(6));
         recommendationBox.prefHeightProperty().bind(feedPane.heightProperty().multiply(19).divide(20));
 
+        feedBox.prefWidthProperty().bind(scrollPane.widthProperty());
+
         try {
             loadRecommendations();
             loadFeed();
@@ -93,10 +95,10 @@ public class FeedController implements Initializable, SceneSwitcher {
 
     private void renderFeed() {
         for(Thrd thrd : feed){
-            ThrdNode thrdNode = new ThrdNode(thrd);
-            thrdNode.prefWidthProperty().bind(scrollPane.widthProperty());
-            feedBox.getChildren().add(thrdNode);
-
+            if(thrd.getArticle() != null) {
+                ThrdNode thrdNode = new ThrdNode(thrd);
+                feedBox.getChildren().add(thrdNode);
+            }
         }
     }
 

@@ -7,18 +7,25 @@
 #Sidebar{
     -fx-background-color: white;
 }
-.button{
-    -fx-border-color: transparent;
-    -fx-border-radius: 0;
-}
 #feedButton{
+    -fx-background-radius: 0;
     -fx-background-color: #F6F6F6;
+    -fx-text-fill: #333333;
 }
 #profileButton{
+    -fx-background-radius: 0;
     -fx-background-color: white;
+    -fx-text-fill: #333333;
 }
 #threadButton{
+    -fx-background-radius: 0;
     -fx-background-color: #F6F6F6;
+    -fx-text-fill: #333333;
+}
+#logoutButton{
+    -fx-background-radius: 0;
+    -fx-background-color: white;
+    -fx-text-fill: #333333;
 }
 
 #feedButton:hover {
@@ -30,6 +37,10 @@
     -fx-text-fill: white;
 }
 #threadButton:hover {
+    -fx-background-color: #d5d5d5;
+    -fx-text-fill: white;
+}
+#logoutButton:hover {
     -fx-background-color: #d5d5d5;
     -fx-text-fill: white;
 }

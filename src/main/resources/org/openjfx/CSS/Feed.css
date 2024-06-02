@@ -1,14 +1,16 @@
 .root {
-    -fx-background-color: #F0F2F5; /* Cor de fundo levemente mais clara */
-    -fx-font-family: 'Arial', sans-serif; /* Fonte moderna e legível */
+    -fx-background-color: #F0F2F5;
 }
 
 #threadNode{
     -fx-background-color: white;
     -fx-font-weight: bold;
-    -fx-border-color: #DDD; /* Borda sutil para separação */
-    -fx-border-width: 1; /* Largura da borda */
-    -fx-padding: 5;
+    -fx-border-color: #DDD;
+    -fx-border-width: 1;
+    -fx-padding: 25;
+    -fx-border-radius: 15;
+    -fx-background-radius: 15;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, 0.0, 0.0, 4.0);
 }
 
 #topPane {
@@ -55,10 +57,32 @@
     -fx-background-color: #0056b3; /* Cor mais escura no hover */
 }
 
+#deleteButton {
+    -fx-border-radius: 30;
+    -fx-background-radius: 30;
+    -fx-effect: dropshadow(gaussian, rgba(0, 0, 0, 0.25), 10, 0.0, 0.0, 2.0);
+    -fx-font-size: 14;
+    -fx-background-color: #ff0000;
+    -fx-text-fill: white;
+    -fx-padding: 10 10;
+    -fx-cursor: hand;
+    -fx-transition: background-color 0.3s ease;
+}
+
+#deleteButton:hover {
+    -fx-background-color: #b30000; /* Cor mais escura no hover */
+}
+
 #titleLabel{
     -fx-font-size: 24;
     -fx-font-weight: bold;
 }
 #textLabel{
     -fx-font-size: 14;
+}
+#threadButton{
+    -fx-border-radius: 30;
+    -fx-background-radius: 30;
+    -fx-background-color: black;
+    -fx-text-fill: white;
 }

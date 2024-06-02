@@ -63,7 +63,10 @@
             </VBox>
             <ScrollPane fx:id="threadPane" prefHeight="200.0" prefWidth="200.0">
                <content>
-                  <VBox fx:id="threadBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" />
+                  <VBox fx:id="threadBox" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" spacing="30.0">
+                     <padding>
+                        <Insets left="40.0" right="40.0" top="20.0" />
+                     </padding></VBox>
                </content>
             </ScrollPane>
          </items>

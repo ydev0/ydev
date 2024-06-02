@@ -31,15 +31,17 @@ public class CommentNode extends VBox implements SceneSwitcher {
     private RequestHandler requestHandler = new RequestHandler();
 
     public CommentNode(Thrd thread) {
-        this.setId("threadNode");
-        this.setAlignment(Pos.CENTER);
+        this.setId("commentNode");
+        this.setAlignment(Pos.TOP_LEFT);
         this.setSpacing(10);
 
         usernameLabel = new Label(thread.getUser().getUsername());
+        usernameLabel.setId("usernameLabel");
         textLabel = new Label(thread.getText());
         textLabel.setId("textLabel");
 
         flowPane = new FlowPane();
+        flowPane.setHgap(10);
         flowPane.getChildren().add(likeButton);
         flowPane.getChildren().add(unlikeButton);
 
