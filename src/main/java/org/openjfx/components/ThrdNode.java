@@ -3,6 +3,7 @@ package org.openjfx.components;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.ydev00.model.thread.Thrd;
+import com.ydev00.model.user.ModUser;
 import com.ydev00.model.user.User;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -64,16 +65,16 @@ public class ThrdNode extends VBox implements SceneSwitcher {
         commentButton.setId("threadButton");
 
         if(App.loggedUser.isRoot()){
-            Button deleteButton = new Button("Apagar ");
+            Button deleteButton = new Button("Apagar");
             flowPane.getChildren().add(deleteButton);
             deleteButton.setId("deleteButton");
             deleteButton.setOnAction(event ->{
-                requestHandler.sendRequest("/delete/thread", "DELETE", new Thrd(thread.getId()), App.loggedUser);
-//                try {
-//                    switchScene("Feed", "Feed");
-//                } catch (IOException e) {
-//                    throw new RuntimeException(e);
-//                }
+                requestHandler.sendRequest("/delete/t/"+thread.getId(), "DELETE", new Object(), App.loggedUser);
+                try {
+                    switchScene("Feed", "Feed");
+                } catch (IOException e) {
+                    throw new RuntimeException(e);
+                }
             });
         }
 

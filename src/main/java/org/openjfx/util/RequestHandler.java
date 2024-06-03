@@ -67,7 +67,7 @@ public RequestHandler(String url) {
           response = putRequest(object, uri);
           break;
         case "DELETE":
-          response = deleteRequest(object, uri);
+          response = deleteRequest(object, uri, user);
           break;
         default:
           throw new Exception("Invalid method");
@@ -141,7 +141,6 @@ public RequestHandler(String url) {
 
   private <T> HttpResponse deleteRequest(T obj, String uri, User user) throws Exception{
     HttpDelete delete = new HttpDelete(uri);
-
     delete.addHeader("Content-Type", "application/json");
     delete.addHeader("username", user.getUsername());
     delete.addHeader("auth", String.valueOf(user.getAuth()));

@@ -56,6 +56,16 @@ public class SignupController implements Initializable, SceneSwitcher {
             System.out.println("User not created");
             return;
         }
+
+        response = requestHandler.sendRequest("login", "POST", userResponse, null);
+        reader = new InputStreamReader(response.getEntity().getContent());
+        userResponse = gson.fromJson(reader, User.class);
+
+        if(userResponse.getId() == 0){
+            System.out.println("User not logged in");
+            return;
+        }
+
         App.loggedUser = userResponse;
 
         switchScene("Feed", "Feed");
