@@ -86,7 +86,7 @@ public class ThrdNode extends VBox implements SceneSwitcher {
         likeButton.setOnMouseClicked(e -> {
             requestHandler.sendRequest("t/like", "POST", new Thrd(thread.getId()) , App.loggedUser);
         });
-        likeButton.setOnMouseClicked(e -> {
+        unlikeButton.setOnMouseClicked(e -> {
             requestHandler.sendRequest("t/unlike", "POST", new Thrd(thread.getId()) , App.loggedUser);
         });
 
