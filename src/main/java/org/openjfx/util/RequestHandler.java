@@ -14,17 +14,33 @@ import org.eclipse.jetty.http.HttpStatus;
 
 import static spark.route.HttpMethod.post;
 
+/**
+ * Classe responsável por gerenciar requisições HTTP.
+ */
 public class RequestHandler {
   private String url;
   private String method;
   private Gson gson;
   private HttpClient httpClient = HttpClientBuilder.create().build();
 
+  /**
+   * Construtor padrão que inicializa a URL padrão do servidor e o objeto Gson.
+   */
   public RequestHandler() {
     this.url = "http://localhost:8080/";
     this.gson = new Gson();
   }
 
+  /**
+   * Envia uma requisição HTTP para o servidor.
+   *
+   * @param route A rota do endpoint.
+   * @param method O método HTTP (GET, POST, PUT, DELETE).
+   * @param object O objeto a ser enviado na requisição.
+   * @param user O usuário autenticado.
+   * @param <T> O tipo do objeto a ser enviado.
+   * @return A resposta HTTP.
+   */
   public <T> HttpResponse sendRequest(String route, String method, T object, User user) {
     HttpResponse response = null;
     StringEntity stringEntity;
@@ -142,7 +158,6 @@ public class RequestHandler {
   public String getUrl() {
     return url;
   }
-
   public void setUrl(String url) {
     this.url = url;
   }

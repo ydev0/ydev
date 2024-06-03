@@ -8,7 +8,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.FlowPane;
 import javafx.scene.layout.VBox;
-import javafx.scene.web.WebView;
 import org.apache.http.HttpResponse;
 import org.openjfx.App;
 import org.openjfx.util.RequestHandler;
@@ -20,6 +19,10 @@ import java.io.Reader;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * A classe CommentNode representa um componente de interface de usuário para exibir um comentário em uma discussão encadeada.
+ * Ela estende VBox e implementa SceneSwitcher para gerenciamento de cenas.
+ */
 public class CommentNode extends VBox implements SceneSwitcher {
     private Label usernameLabel;
     private Label textLabel;
@@ -30,6 +33,11 @@ public class CommentNode extends VBox implements SceneSwitcher {
 
     private RequestHandler requestHandler = new RequestHandler();
 
+    /**
+     * Constrói um CommentNode para um determinado thread.
+     *
+     * @param thread O objeto thread contendo dados do comentário.
+     */
     public CommentNode(Thrd thread) {
         this.setId("commentNode");
         this.setAlignment(Pos.TOP_LEFT);

@@ -11,6 +11,10 @@ import org.openjfx.util.RequestHandler;
 import org.openjfx.util.SceneSwitcher;
 import java.io.IOException;
 
+/**
+ * A classe Sidebar representa uma barra lateral de navegação da interface de usuário.
+ * Ela estende VBox e implementa SceneSwitcher para gerenciamento de cenas.
+ */
 public class Sidebar extends VBox implements SceneSwitcher {
     @FXML
     private Label logoLabel;
@@ -23,6 +27,9 @@ public class Sidebar extends VBox implements SceneSwitcher {
     @FXML
     private Button logoutButton;
 
+    /**
+     * Construtor da classe Sidebar. Carrega o layout do FXML e aplica os estilos CSS.
+     */
     public Sidebar() {
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("/org/openjfx/Sidebar.fxml"));
         fxmlLoader.setRoot(this);
@@ -46,13 +53,32 @@ public class Sidebar extends VBox implements SceneSwitcher {
         logoLabel.prefHeightProperty().bind(this.heightProperty().divide(10));
     }
 
+    /**
+     * Método para trocar para a cena do editor de threads.
+     *
+     * @param event O evento de ação.
+     * @throws IOException Se ocorrer um erro de E/S ao carregar a cena.
+     */
     public void switchThread(ActionEvent event) throws IOException {
         switchScene("ThreadEditor", "ThreadEditor");
     }
 
+    /**
+     * Método para trocar para a cena do feed.
+     *
+     * @param event O evento de ação.
+     * @throws IOException Se ocorrer um erro de E/S ao carregar a cena.
+     */
     public void switchFeed(ActionEvent event) throws IOException {
         switchScene("Feed", "Feed");
     }
+
+    /**
+     * Método para trocar para a cena do perfil do usuário.
+     *
+     * @param event O evento de ação.
+     * @throws IOException Se ocorrer um erro de E/S ao carregar a cena.
+     */
     public void switchProfile(ActionEvent event) throws IOException {
         App.pageUser = App.loggedUser;
         switchScene("profilePage", "Profile");

@@ -19,6 +19,10 @@ import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 
+/**
+ * Controlador para o editor de artigos e threads.
+ * Permite criar, enviar e salvar rascunhos de artigos.
+ */
 public class EditorController implements Initializable, SceneSwitcher {
     @FXML
     private FlowPane topPane;
@@ -37,6 +41,13 @@ public class EditorController implements Initializable, SceneSwitcher {
     private RequestHandler requestHandler = new RequestHandler();
     private Gson gson = new Gson();
 
+
+    /**
+     * Submete um novo artigo e thread.
+     *
+     * @param event O evento de ação que acionou o método.
+     * @throws IOException Se ocorrer um erro de entrada/saída.
+     */
     public void submit(ActionEvent event) throws IOException {
 
         String title = titleField.getText();
@@ -66,6 +77,12 @@ public class EditorController implements Initializable, SceneSwitcher {
         titleField.setText("");
     }
 
+    /**
+     * Salva o artigo atual como rascunho em um arquivo HTML.
+     *
+     * @param event O evento de ação que acionou o método.
+     * @throws IOException Se ocorrer um erro de entrada/saída.
+     */
     public void saveDraft(ActionEvent event) throws IOException {
         directoryChooser = new DirectoryChooser();
         directoryChooser.setTitle("Selecione uma pasta para salvar o seu artigo");
@@ -83,6 +100,12 @@ public class EditorController implements Initializable, SceneSwitcher {
         fileWriter.close();
     }
 
+    /**
+     * Inicializa o controlador com as configurações necessárias.
+     *
+     * @param location O URL da localização.
+     * @param resources O recurso utilizado.
+     */
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         topPane.prefWidthProperty().bind(editorPane.widthProperty());
