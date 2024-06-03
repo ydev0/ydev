@@ -16,6 +16,11 @@ import org.openjfx.util.ImageHandler;
 import org.openjfx.util.RequestHandler;
 import org.openjfx.util.SceneSwitcher;
 
+
+/**
+ * Controlador para a tela de cadastro.
+ * Gerencia a criação de novos usuários, incluindo o upload de imagens de perfil.
+ */
 public class SignupController implements Initializable, SceneSwitcher {
     @FXML
     public TextField usernameField;
@@ -35,10 +40,25 @@ public class SignupController implements Initializable, SceneSwitcher {
     private ImageHandler imageHandler = new ImageHandler();
     private Gson gson = new Gson();
 
+    /**
+     * Realiza o cadastro do usuário quando o botão de cadastro é pressionado.
+     *
+     * @param event O evento de clique do botão.
+     * @throws IOException Se ocorrer um erro de entrada/saída.
+     */
     public void signup(ActionEvent event) throws IOException {
         emailInput = emailField.getText();
         passwordInput = passwordField.getText();
         usernameInput = usernameField.getText();
+
+        if(usernameInput.contains(" ")){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setHeaderText("Nome inválido");
+            alert.setContentText("Não aceitamos espaços em branco no nome de usuário.");
+
+            alert.showAndWait();
+            return;
+        }
 
         if(emailInput.isEmpty() || passwordInput.isEmpty() || usernameInput.isEmpty() || profilePic == null){
             System.out.println("Empty fields");
@@ -71,6 +91,13 @@ public class SignupController implements Initializable, SceneSwitcher {
         switchScene("Feed", "Feed");
     }
 
+
+    /**
+     * Alterna para a tela de login.
+     *
+     * @param event O evento de clique do botão.
+     * @throws IOException Se ocorrer um erro de entrada/saída.
+     */
     public void switchLogin(ActionEvent event) throws IOException {
         switchScene("Login", "LoginSignup");
     }

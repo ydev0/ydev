@@ -15,7 +15,10 @@ import org.apache.http.HttpResponse;
 import org.openjfx.util.RequestHandler;
 import org.openjfx.util.SceneSwitcher;
 
-
+/**
+ * Controlador para a tela de login.
+ * Gerencia a autenticação de usuários e a navegação para outras telas.
+ */
 public class LoginController implements Initializable, SceneSwitcher {
   @FXML
   private TextField emailField;
@@ -29,6 +32,12 @@ public class LoginController implements Initializable, SceneSwitcher {
   private RequestHandler requestHandler = new RequestHandler();
   private Gson gson = new Gson();
 
+  /**
+   * Realiza a ação de login quando o botão de login é clicado.
+   *
+   * @param event O evento de clique do botão.
+   * @throws IOException Se ocorrer um erro de entrada/saída.
+   */
   public void login(ActionEvent event) throws IOException {
     emailInput = emailField.getText();
     passwordInput = passwordField.getText();
@@ -49,7 +58,12 @@ public class LoginController implements Initializable, SceneSwitcher {
 
     switchScene("Feed", "Feed");
   }
-
+  /**
+   * Alterna para a tela de cadastro quando o botão de cadastro é clicado.
+   *
+   * @param event O evento de clique do botão.
+   * @throws IOException Se ocorrer um erro de entrada/saída.
+   */
   public void switchSignup(ActionEvent event) throws IOException {
     switchScene("Signup", "LoginSignup");
   }

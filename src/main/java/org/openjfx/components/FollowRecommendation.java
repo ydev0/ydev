@@ -17,6 +17,11 @@ import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.Reader;
 
+/**
+ * A classe FollowRecommendation representa um componente de interface de usuário para exibir
+ * recomendações de usuários a serem seguidos. Ela estende HBox e implementa SceneSwitcher
+ * para gerenciamento de cenas.
+ */
 public class FollowRecommendation extends HBox implements SceneSwitcher {
     private RequestHandler requestHandler = new RequestHandler();
     private ImageHandler imageHandler = new ImageHandler();
@@ -25,6 +30,11 @@ public class FollowRecommendation extends HBox implements SceneSwitcher {
     private Label usernameLabel;
     private Button followButton;
 
+    /**
+     * Constrói um FollowRecommendation para um determinado usuário.
+     *
+     * @param user O objeto User contendo os dados do usuário a ser recomendado.
+     */
     public FollowRecommendation(User user){
         this.setSpacing(15);
         this.setAlignment(Pos.CENTER);

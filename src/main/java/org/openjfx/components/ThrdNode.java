@@ -25,6 +25,10 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
+/**
+ * A classe ThrdNode representa um componente de interface de usuário para exibir uma thread em uma discussão.
+ * Ela estende VBox e implementa SceneSwitcher para gerenciamento de cenas.
+ */
 public class ThrdNode extends VBox implements SceneSwitcher {
     private Label usernameLabel;
     private Label textLabel;
@@ -39,6 +43,11 @@ public class ThrdNode extends VBox implements SceneSwitcher {
     private RequestHandler requestHandler = new RequestHandler();
     private HttpResponse response;
 
+    /**
+     * Constrói um ThrdNode para uma determinada thread.
+     *
+     * @param thread O objeto thread contendo dados da discussão.
+     */
     public ThrdNode(Thrd thread){
 
         this.setId("threadNode");
@@ -128,6 +137,7 @@ public class ThrdNode extends VBox implements SceneSwitcher {
             iterator.next();
             for(; iterator.hasNext(); ) {
                 CommentNode comment = new CommentNode(iterator.next());
+                comment.setId("commentNode");
                 comment.prefWidthProperty().bind(dialogVbox.widthProperty().divide(1.5));
                 dialogVbox.getChildren().add(comment);
                 separator = new Separator();

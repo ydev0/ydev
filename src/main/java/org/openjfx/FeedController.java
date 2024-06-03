@@ -24,6 +24,10 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
+/**
+ * Controlador para o feed de threads e recomendações de usuários.
+ * Carrega e exibe as threads e recomendações na interface do usuário.
+ */
 public class FeedController implements Initializable, SceneSwitcher {
     @FXML
     private FlowPane topPane;
@@ -45,6 +49,12 @@ public class FeedController implements Initializable, SceneSwitcher {
     private List<User> recommendations = new ArrayList<>();
 
 
+    /**
+     * Inicializa o controlador com as configurações necessárias.
+     *
+     * @param url O URL da localização.
+     * @param resourceBundle O recurso utilizado.
+     */
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
         sidebar.prefWidthProperty().bind(feedPane.widthProperty().divide(7));
@@ -68,6 +78,11 @@ public class FeedController implements Initializable, SceneSwitcher {
         renderFeed();
     }
 
+    /**
+     * Carrega o feed de threads do servidor.
+     *
+     * @throws IOException Se ocorrer um erro de entrada/saída.
+     */
     private void loadFeed() throws IOException {
         HttpResponse response = requestHandler.sendRequest("feed", "GET", new Object(), App.loggedUser);
         Reader reader = new InputStreamReader(response.getEntity().getContent());
@@ -75,7 +90,11 @@ public class FeedController implements Initializable, SceneSwitcher {
         feed = gson.fromJson(reader, listType);
     }
 
-
+    /**
+     * Carrega as recomendações de usuários do servidor.
+     *
+     * @throws IOException Se ocorrer um erro de entrada/saída.
+     */
     private void loadRecommendations() throws IOException {
         HttpResponse response = requestHandler.sendRequest("getAll", "GET", new Object(), null);
         Reader reader = new InputStreamReader(response.getEntity().getContent());
@@ -84,6 +103,9 @@ public class FeedController implements Initializable, SceneSwitcher {
     }
 
 
+    /**
+     * Renderiza as recomendações de usuários na interface do usuário.
+     */
     private void renderRecommendations()  {
         for(User user : recommendations){
             FollowRecommendation recommendation = new FollowRecommendation(user);
@@ -93,6 +115,9 @@ public class FeedController implements Initializable, SceneSwitcher {
         }
     }
 
+    /**
+     * Renderiza o feed de threads na interface do usuário.
+     */
     private void renderFeed() {
         for(Thrd thrd : feed){
             if(thrd.getArticle() != null) {
