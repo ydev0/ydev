@@ -25,15 +25,6 @@ public class RequestHandler {
     this.gson = new Gson();
   }
 
-public RequestHandler(String url) {
-    this.url = url;
-  }
-
-  public RequestHandler(String url, String method, String headers) {
-    this.url = url;
-    this.method = method;
-  }
-
   public <T> HttpResponse sendRequest(String route, String method, T object, User user) {
     HttpResponse response = null;
     StringEntity stringEntity;
@@ -44,9 +35,9 @@ public RequestHandler(String url) {
 
       String uri = url + route;
 
-      System.out.println("Method: " + method);
-      System.out.println("Object: " + object);
-      System.out.println("URI: " + uri);
+      System.out.println("Method:" + method);
+      System.out.println("Object:" + object);
+      System.out.println("URI:" + uri);
 
       switch (method) {
         case "GET":
